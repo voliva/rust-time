@@ -1,0 +1,11 @@
+[package]
+name = "rust-time"
+version = "0.1.0"
+authors = ["Víctor Oliva <victor@weareadaptive.com>"]
+edition = "2018"
+
+[dependencies]
+clap = "2.33.0"
+reqwest = "0.9.19"
+serde = "1.0.98"
+chrono = "0.4.7"
