@@ -10,7 +10,7 @@ struct LoginResponse {
 fn main() {
     let now: DateTime<Local> = Local::now();
     let date = now.format("%Y-%m-%d");
-    let date_str = format!("{}", date);
+    let default_date_str = format!("{}", date);
 
     let matches = App::new("Rust-time")
         .arg(Arg::with_name("email")
@@ -20,7 +20,7 @@ fn main() {
         .arg(Arg::with_name("date")
             .long("date")
             .value_name("YYYY-MM-DD")
-            .default_value(&date_str)
+            .default_value(&default_date_str)
             .takes_value(true))
         .arg(Arg::with_name("checkin")
             .long("in")
@@ -50,6 +50,7 @@ fn main() {
     let chk_break = matches.value_of("break").unwrap();
     let chk_return = matches.value_of("return").unwrap();
     let chk_out = matches.value_of("checkout").unwrap();
+    let date_str = matches.value_of("date").unwrap();
 
     let client = Client::new();
     let token = match login(&client, email, password) {
